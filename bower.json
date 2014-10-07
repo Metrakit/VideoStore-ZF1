@@ -1,0 +1,11 @@
+{
+  "name": "Zend Framework 1 - Test",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Metrakit/zf1",
+  "description": "1er cours sur l'utilisation de Zend Framework",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "3.2.0"
+  } 
+  
+}
