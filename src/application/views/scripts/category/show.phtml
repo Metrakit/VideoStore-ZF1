@@ -1,0 +1,54 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1>Catégorie: <?= $this->category->getName() ?></h1>
+    </div>
+    
+    <p>Date de dernière modification: 
+        <span class="text-muted"><?= $this->category->getLastUpdate() ?></span>
+    </p>       
+    
+    <h2>Films:</h2>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <td class="text-center">Titre</td>
+                <td class="text-center">Date de sortie</td>
+                <td class="text-center">PEGI</td>
+                <td class="text-center">Durée</td>
+                <td class="text-center">Prix</td>
+                <td class="text-center">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+        
+            <?php 
+                $films = $this->category->getFilms();
+                foreach ($films as $film) :
+            ?>   
+                <tr>
+                    <td>
+                        <a href="/film/show/filmId/<?= $film->getFilmId() ?>">
+                            <?= $film->getTitle() ?>
+                        </a>
+                    </td>
+                    <td class="text-center"><?= $film->getReleaseYear() ?></td>
+                    <td class="text-center"><?= $film->getRating() ?></td>
+                    <td class="text-center"><?= $film->getLength() ?> minutes</td>
+                    <td class="text-center"><?= $film->getReplacementCost() ?> $</td>
+                    <td class="text-center">
+                        <a class="btn btn-danger btn-xs" href="/film/delete/filmId/<?= $film->getFilmId() ?>">
+                            X
+                        </a>
+                    </td>
+                </tr>  
+            <?php endforeach; ?>        
+            
+        </tbody>
+    </table>        
+    
+    
+    <hr />
+    <a class="btn btn-primary" href="/category">Retour à la liste des catégories</a>
+    
+</div>

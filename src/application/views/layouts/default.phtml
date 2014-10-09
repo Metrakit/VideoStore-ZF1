@@ -11,10 +11,10 @@
     <title>Zend Framework 1 - 1er cours</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,9 +34,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Zend Framework 1</a>
+          <a class="navbar-brand" href="/">ZF1 - Videos</a>
         </div>
         <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/film">Films</a></li>
+            <li><a href="/actor">Acteurs</a></li>
+            <li><a href="/category">Catégories</a></li>
+          </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
@@ -50,41 +55,10 @@
       </div>
     </div>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Zend Framework 1</h1>
-        <p>1er cours sur Zend Framework 1</p>
-        <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-      </div>
-    </div>
+    <?= $this->layout()->content ?>
     
     <div class="container">
-        <?= $this->layout()->content ?>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
-
       <hr>
-
       <footer>
         <p>&copy; Jordane Corporation 2014</p>
       </footer>
@@ -94,7 +68,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/jquery/dist/jquery.min.js"></script>
-    <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

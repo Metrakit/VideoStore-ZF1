@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="page-header row">
+        <div class="col-md-8">
+            <h1>Catégories</h1>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-primary pull-right" href="/category/add">Ajouter une catégorie</a>
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <td class="text-center">Catégories</td>
+                <td class="text-center">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->categoryList as $category) : ?>
+            
+                <tr>
+                    <td>
+                        <a href="/category/show/categoryId/<?= $category->getCategoryId() ?>">
+                            <?= $category->getName() ?>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-danger btn-xs" href="/category/delete/categoryId/<?= $category->getCategoryId() ?>">
+                            X
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+</div>

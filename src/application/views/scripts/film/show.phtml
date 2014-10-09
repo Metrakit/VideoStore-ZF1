@@ -1,0 +1,44 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1><?= $this->film->getTitle() ?></h1>
+    </div>
+    
+    <h2>Détails du film:</h2>
+    <div class="well">
+        <?= $this->film->getDescription() ?>
+    </div>
+    
+    <h2>Catégories:</h2>
+    <ul>
+        <?php 
+            $categories = $this->film->getCategories();
+            foreach ($categories as $category) :
+        ?>   
+            <li>
+                <a href="/category/show/categoryId/<?= $category->getCategoryId() ?>">
+                    <?= $category->getName() ?>
+                </a>
+            </li>   
+        <?php endforeach; ?>
+    </ul>
+    
+    <h2>Acteurs:</h2>
+    <ul class="capitalize">
+        <?php 
+            $actors = $this->film->getActors();
+            foreach ($actors as $actor) :
+        ?>   
+            <li>
+                <a href="/actor/show/actorId/<?= $actor->getActorId() ?>">
+                    <?= $actor->getFirstName() ?> <?= $actor->getLastName() ?>
+                </a>
+            </li>   
+        <?php endforeach; ?>
+    </ul>    
+    
+    
+    <hr />
+    <a class="btn btn-primary" href="/">Retour à la liste</a>
+    
+</div>
