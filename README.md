@@ -1,2 +1,3 @@
-Video store realised with Zend Framework 1
+Video store
 ===
+Realised with Zend framework 1
