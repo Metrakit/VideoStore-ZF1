@@ -7,6 +7,31 @@
 </div>
 
 <div class="container">
+
+    <div class="row">
+        <?php foreach ($this->lastFilms as $film): ?>
+        
+            <div class="col-sm-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <a href="/film/show/filmId/<?= $film->getFilmId() ?>">
+                            <?= $film->getTitle() ?>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <blockquote><?= $film->getDescription() ?></blockquote>
+                    </div>
+                </div>       
+            </div>
+    
+        <?php endforeach; ?>
+        
+        <div class="col-md-3">
+            <a href="/film" class="btn btn-default btn-lg btn-block">Voir +</a>
+        </div>
+        
+    </div>
+    
 	<div class="row">
         <div class="col-md-4">
             <a href="/film" class="btn btn-primary btn-lg btn-block btn-xxl">Voir les films</a>

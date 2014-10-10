@@ -11,6 +11,7 @@ class Form_Category_Add extends Zend_Form
         $this->addElement('text', 'name', array(
             'label'       => 'Nom',
             'placeholder' => 'ex: horreur',
+            'description' => 'Nom de moins de 25 caractères',
             'required'    => true,
             'class'       => 'form-control',
         ));        

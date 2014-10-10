@@ -9,9 +9,12 @@ class Service_Actor
 {
     private $actorMapper;
     
-    public function create(Model_Actor $actor)
+    public function create($data)
     {
-        return $this->getActorMapper()->insert($actor);
+       $actor = new Model_Actor;
+       $actor->setFirstName($data['firstName']);
+       $actor->setLastName($data['lastName']);
+       $this->getActorMapper()->insert($actor);
     }
     
     /**
@@ -42,6 +45,34 @@ class Service_Actor
     {
         return $this->getActorMapper()->fetchAll($where, $order, $count, $offset);
     }
+    
+    /**
+     * Récupère une lite d'acteurs et la converti en Array (utile pour un form)
+     * @param string $where
+     * @param string $order
+     * @param string $count
+     * @param string $offset
+     * @return array
+     */
+    public function getListToArray($where = NULL, $order = NULL, $count = NULL, $offset = NULL)
+    {
+        $results = $this->getList($where = NULL, $order = NULL, $count = NULL, $offset = NULL);
+        return $this->objectToRow($results);
+    }
+    
+    /**
+     * Converti les Acteurs en un tableau
+     * @param Array $actors
+     * @return Array
+     */
+    private function objectToRow($actors)
+    {
+        $results = array();
+        foreach ($actors as $actor) {
+            $results[$actor->getActorId()] = $actor->getFirstName() . ' ' . $actor->getLastName();
+        }
+        return $results;
+    }        
     
     /**
      * Lazy loading du mapper Actor

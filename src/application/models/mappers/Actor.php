@@ -25,6 +25,7 @@ class Model_Mapper_Actor
     {
         $table = new Model_DbTable_FilmActor;
         $result = $table->fetchAll(array('film_id = ?' => $id));
+        $actors = array();
         foreach ($result as $row) {
             $actors[] = $this->find($row['actor_id']);
         }
@@ -96,7 +97,7 @@ class Model_Mapper_Actor
     private function objectToRow(Model_Actor $actor)
     {
         return array(
-            'actor_id' => $actor->getFilmId(),
+            'actor_id' => $actor->getActorId(),
             'first_name' => $actor->getFirstName(),
             'last_name' => $actor->getLastName(),
             'last_update' => $actor->getLastUpdate()

@@ -46,6 +46,35 @@ class Service_Category
     }
     
     /**
+     * Récupère une lite de catégories et la converti en Array (utile pour un form)
+     * @param string $where
+     * @param string $order
+     * @param string $count
+     * @param string $offset
+     * @return array
+     */
+    public function getListToArray($where = NULL, $order = NULL, $count = NULL, $offset = NULL)
+    {
+        $results = $this->getList($where = NULL, $order = NULL, $count = NULL, $offset = NULL);
+        return $this->objectToRow($results);      
+    }
+
+    /**
+     * Converti les catégories en un tableau
+     * @param Array $categories
+     * @return Array
+     */
+    private function objectToRow($categories)
+    {
+        $results = array();
+        foreach ($categories as $category) {
+            $results[$category->getCategoryId()] = $category->getName();
+        }
+        return $results;  
+    }    
+    
+    
+    /**
      * Lazy loading du mapper Category
      * @return Model_Mapper_Category
      */

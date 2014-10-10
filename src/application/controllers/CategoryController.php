@@ -40,6 +40,7 @@ class CategoryController extends Zend_Controller_Action
             if ($form->isValid($this->getRequest()->getPost())) {
                 $this->category()->create($form->getValue('name'));
                 $this->view->message = 'Catégorie crée';
+                $form->reset();
             }
             
         }

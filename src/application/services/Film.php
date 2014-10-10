@@ -9,9 +9,22 @@ class Service_Film
 {
     private $filmMapper;
     
-    public function create(Model_Film $film)
+    public function create($data)
     {
-        return $this->getFilmMapper()->insert($film);
+       $film = new Model_Film;
+       $film->setTitle($data['title']);
+       $film->setDescription($data['description']);
+       $film->setReleaseYear($data['releaseYear']);
+       $film->setLanguageId($data['language']);
+       $film->setOriginalLanguageId($data['originalLanguage']);
+       $film->setRentalDuration($data['rentalDuration']);
+       $film->setRentalRate($data['rentalRate']);
+       $film->setLength($data['length']);
+       $film->setReplacementCost($data['replacementCost']);
+       $film->setRating($data['rating']);
+       $film->addSpecialFeatures($data['specialFeatures']);     
+       $id = $this->getFilmMapper()->insert($film);
+       return $id;
     }
     
     /**

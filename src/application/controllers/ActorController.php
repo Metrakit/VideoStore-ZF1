@@ -19,6 +19,27 @@ class ActorController extends Zend_Controller_Action
             );
         }
     }
+    
+    /**
+     * Ajoute un acteur
+     */
+    public function addAction()
+    {
+        $form = new Form_Actor_Add;
+        $form->setAction('');
+    
+        if ($this->getRequest()->isPost()) {
+    
+            if ($form->isValid($this->getRequest()->getPost())) {
+                $actor = $this->actor()->create($form->getValues());
+                $this->view->message = "L'acteur a été crée avec succès !";          
+                $form->reset();
+            }
+    
+        }
+    
+        $this->view->form = $form;
+    }    
 
     /**
      * Supprime un acteur

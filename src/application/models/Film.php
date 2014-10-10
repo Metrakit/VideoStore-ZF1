@@ -63,6 +63,61 @@ class Model_Film
      */
     private $actors;
     
+    /** 
+     * @var Array
+     */
+    private $labels = array(
+        'Trailers',
+        'Commentaries',
+        'Deleted Scenes',
+        'Behind the Scenes'
+    );
+    
+    /**
+     * @var Array
+     */
+    private $PEGI = array(
+        'G',
+        'PG',
+        'PG-13',
+        'R',
+        'NC-17'
+    );    
+    
+	/**
+     * @return the $PEGI
+     */
+    public function getPEGI()
+    {
+        return $this->PEGI;
+    }
+
+	/**
+     * @param multitype: $PEGI
+     */
+    public function setPEGI($PEGI)
+    {
+        $this->PEGI[] = $PEGI;
+        return $this;
+    }
+
+	/**
+     * @return the $labels
+     */
+    public function getLabels()
+    {
+        return $this->labels;
+    }
+
+	/**
+     * @param multitype: $labels
+     */
+    public function setLabels($label)
+    {
+        $this->labels[] = $label;
+        return $this;
+    }
+
 	/**
      * @return the $filmId
      */
@@ -267,15 +322,6 @@ class Model_Film
     }
 
 	/**
-     * @param string $specialFeatures
-     */
-    public function setSpecialFeatures($specialFeatures)
-    {
-        $this->specialFeatures = $specialFeatures;
-        return $this;
-    }
-
-	/**
      * @param string $lastUpdate
      */
     public function setLastUpdate($lastUpdate)
@@ -283,7 +329,32 @@ class Model_Film
         $this->lastUpdate = $lastUpdate;
         return $this;
     }
-
+    
+    public function setSpecialFeatures($features)
+    {
+        $this->specialFeatures = $features;
+        return $this;
+    }    
+    
+    /**
+     * Crée la liste de features
+     * @param Array $features
+     * @return string
+     */
+    public function addSpecialFeatures($features)
+    {
+        $labels = $this->getLabels();
+        $listFeatures = "";
+        foreach ($features as $feature) {
+            if (array_key_exists($feature, $labels)) {
+                $listFeatures .= $labels[$feature] . ",";
+            }
+        }        
+        $this->specialFeatures = substr($listFeatures, 0, -1); 
+        
+        return $this;
+    }      
+    
     public function getCategories()
     {
         if (NULL === $this->categories) {

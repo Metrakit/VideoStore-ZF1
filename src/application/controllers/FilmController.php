@@ -22,6 +22,34 @@ class FilmController extends Zend_Controller_Action
     }
     
     /**
+     * Ajoute une catégorie
+     */
+    public function addAction()
+    {
+        $filmCategory = new Service_FilmCategory;
+        $filmActor = new Service_FilmActor;
+        $form = new Form_Film_Add;
+        $form->setAction('');
+    
+        if ($this->getRequest()->isPost()) {
+    
+            if ($form->isValid($this->getRequest()->getPost())) {
+                $filmId = $this->film()->create($form->getValues());
+                if ($filmId) {
+                    $filmCategory->create($filmId, $form->getValue('categories'));
+                    $filmActor->create($filmId, $form->getValue('actors'));
+                }
+                $this->view->message = 'Film crée';
+                $this->view->filmId = $filmId;
+                $form->reset();
+            }
+    
+        }
+    
+        $this->view->form = $form;
+    }    
+    
+    /**
      * Supprime un film
      */
     public function deleteAction()

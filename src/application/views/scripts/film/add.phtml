@@ -1,12 +1,13 @@
 <div class="container">
 
     <div class="page-header">
-        <h1>Ajout d'une catégorie de films</h1>
+        <h1>Ajout d'un film</h1>
     </div>
     
     <?php if ($this->message != '') : ?>
         <div class="alert alert-success">
             <?= $this->message ?>
+            <a class="btn btn-success" href="/film/show/filmId/<?= $this->filmId ?>">Voir le film</a>
         </div>
     <?php endif; ?>
     
@@ -20,7 +21,7 @@
                 array('ViewScript',
                     
                     array(
-                        'viewScript' => 'category/add.form.phtml',
+                        'viewScript' => 'film/add.form.phtml',
                     ),
                     
                 ),
